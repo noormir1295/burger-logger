@@ -23,7 +23,6 @@ function translateSql(ob) {
   return arr.toString();
 }
 
-
 var orm = {
   //Select all
   selectAll: function (table, cb) {
@@ -60,24 +59,23 @@ var orm = {
   updateOne: function (table, objColVals, condition, cb) {
     let queryString =
       "UPDATE" + table + "SET" + translateSql(objColVals) + "WHERE" + condition;
-    
-      connection.query(queryString, (err, data) => {
+
+    connection.query(queryString, (err, data) => {
       if (err) {
         throw err;
       }
       cb(data);
     });
   },
-  deleteOne: function(table,condition,cb) {
-      let queryString= "DELETE FROM" + table + "WHERE" + condition;
-
-  }
+  deleteOne: function (table, condition, cb) {
+    let queryString = "DELETE FROM" + table + "WHERE" + condition;
+    connection.query(queryString, (err, data) => {
+      if (err) {
+        throw err;
+      }
+      cb(data);
+    });
+  },
 };
- connection.query(queryString, (err, data) => {
-   if (err) {
-     throw err;
-   }
-   cb(data);
- });
 
 module.exports = orm;

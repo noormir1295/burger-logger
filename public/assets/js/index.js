@@ -3,7 +3,7 @@ $(function () {
     event.preventDefault();
 
     var newBurger = {
-      burger_name: $("#newburger").val().trim(),
+      burgerName: $("#newburger").val().trim(),
       devoured: 0,
     };
 
