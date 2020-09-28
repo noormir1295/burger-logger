@@ -37,15 +37,15 @@ var orm = {
   },
 
   //Insert
-  insertOne: function (table, col, val, cb) {
+  insertOne: function (table, cols, vals, cb) {
     let queryString =
       "INSERT INTO" +
       table +
       "(" +
-      col.toStrings() +
+      cols.toStrings() +
       ")" +
       "VALUES (" +
-      createQmarks(val.length) +
+      createQmarks(vals.length) +
       ")";
 
     console.log(queryString);
@@ -57,9 +57,9 @@ var orm = {
     });
   },
   //Update
-  updateOne: function (table, objColVal, condition, cb) {
+  updateOne: function (table, objColVals, condition, cb) {
     let queryString =
-      "UPDATE" + table + "SET" + translateSql(objColVal) + "WHERE" + condition;
+      "UPDATE" + table + "SET" + translateSql(objColVals) + "WHERE" + condition;
     
       connection.query(queryString, (err, data) => {
       if (err) {
