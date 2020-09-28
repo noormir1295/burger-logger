@@ -9,7 +9,7 @@
                     <label for="newburger">Order a Fresh Burger</label>
                     <input type="text" id="newburger" name="burger">
                     <button type="submit" class="btn btn-success" id="addburger">
-                        <span class="fa fa-thumbs up"></span>
+                        <span class="fa fa-thumbs up">Submit!</span>
                     </button>
                 </div>
             </form>
@@ -19,8 +19,8 @@
 <div class="row">
     <div class="col-sm-6">
         <div class="panel panel-default">
-            <div class="panel-heading" id="leftside"><strong>Order Your Burger</strong>
-                <p>Send order to cashier when ready for pick up</p>
+            <div class="panel-heading" id="leftside"><strong>Your Ordered Burger</strong>
+                
             </div>
             <div class="panel-body">
 
@@ -30,7 +30,7 @@
 
                     <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
                     <button type="button" class="eatburger btn btn-warning" id="eatbutton" data-id="{{this.id}}"
-                        data-newDevoured="{{devour}}"><span class="fa fa-usd"></span></button>
+                        data-newDevoured="{{devour}}"><span>Devour</span></button>
                     <hr>
                     {{/unless}}
                     {{/each}}
@@ -41,8 +41,8 @@
     </div>
     <div class="col-sm-6">
         <div class="panel panel-default">
-            <div class="panel-heading" id="rightside"><strong>Burger is Ready for Pick Up</strong>
-                <p>Remove order from pick up when delivered</p>
+            <div class="panel-heading" id="rightside"><strong>Burger is Devoured</strong>
+               
             </div>
             <div class="panel-body">
                 <ul>
@@ -50,7 +50,7 @@
                     {{#if devoured}}
                     <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
                     <button type="button" class="trashburger btn btn-danger" id="trashbutton" data-id="{{this.id}}"
-                        data-newDevoured="{{devour}}"><span class="fa fa-trash"></span></button>
+                        data-newDevoured="{{devour}}"><span>Remove</span></button>
                     <hr>
                     {{/if}}
                     {{/each}}

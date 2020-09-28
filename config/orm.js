@@ -24,58 +24,63 @@ function translateSql(ob) {
 }
 
 var orm = {
-  //Select all
   selectAll: function (table, cb) {
-    let queryString = "SELECT * FROM" + table + ";";
-    connection.query(queryString, (err, data) => {
+    var queryString = "SELECT * FROM " + table + ";";
+
+    connection.query(queryString, function (err, res) {
       if (err) {
         throw err;
       }
-      cb(data);
+      cb(res);
     });
   },
-
-  //Insert
   insertOne: function (table, cols, vals, cb) {
-    let queryString =
-      "INSERT INTO" +
+    var queryString =
+      "INSERT INTO " +
       table +
-      "(" +
-      cols.toStrings() +
-      ")" +
+      " (" +
+      cols.toString() +
+      ") " +
       "VALUES (" +
       createQmarks(vals.length) +
-      ")";
+      ") ";
 
     console.log(queryString);
-    connection.query(queryString, val, (err, data) => {
+    connection.query(queryString, vals, function (err, res) {
       if (err) {
         throw err;
       }
-      cb(data);
+      cb(res);
     });
   },
-  //Update
   updateOne: function (table, objColVals, condition, cb) {
-    let queryString =
-      "UPDATE" + table + "SET" + translateSql(objColVals) + "WHERE" + condition;
+    var queryString =
+      "UPDATE " +
+      table +
+      " SET " +
+      translateSql(objColVals) +
+      " WHERE " +
+      condition;
 
-    connection.query(queryString, (err, data) => {
+    console.log(queryString);
+
+    connection.query(queryString, function (err, res) {
       if (err) {
         throw err;
       }
-      cb(data);
+      cb(res);
     });
   },
   deleteOne: function (table, condition, cb) {
-    let queryString = "DELETE FROM" + table + "WHERE" + condition;
-    connection.query(queryString, (err, data) => {
+    var queryString = "DELETE FROM " + table + " WHERE " + condition;
+    console.log(queryString);
+
+    connection.query(queryString, function (err, res) {
       if (err) {
         throw err;
       }
-      cb(data);
+      cb(res);
     });
   },
 };
-
 module.exports = orm;
